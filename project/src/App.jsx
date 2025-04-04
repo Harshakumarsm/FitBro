@@ -1,23 +1,28 @@
-import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import ProductsSection from './components/ProductsSection';
-import WhyUsSection from './components/WhyUsSection';
-import ContactSection from './components/ContactSection';
-import FaqSection from './components/FaqSection';
-import Footer from './components/Footer';
+import Home from './components/Home';
+import LoginPage from './auth/login';
+import RegisterPage from './auth/register';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './contexts/authContexts';
 
 export default function App() {
   return (
     <div className="min-h-screen">
-      <Navbar />
-      <main>
-        <HeroSection />
-        <ProductsSection />
-        <WhyUsSection />
-        <FaqSection />
-        <ContactSection />
-      </main>
-      <Footer />
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            
+            {/* Protected Routes */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/home" element={<Home />} />
+              {/* Add more protected routes here */}
+            </Route>
+          </Routes>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }

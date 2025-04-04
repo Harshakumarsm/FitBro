@@ -1,11 +1,44 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/authContexts';
+import { logout } from '../firebase/auth';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const { userlogin, currentuser } = useAuth();
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const toggleProfile = () => {
+    setIsProfileOpen(!isProfileOpen);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isProfileOpen && !event.target.closest('.profile-dropdown')) {
+        setIsProfileOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isProfileOpen]);
 
   return (
     <nav className="bg-white shadow-md fixed w-full z-10">
@@ -31,9 +64,38 @@ const Navbar = () => {
             <a href="#contact" className="text-gray-700 hover:text-[#E7473C] px-3 py-2 text-sm font-medium">
               Contact Us
             </a>
-            <button className="bg-[#E7473C] hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium">
-              Get Started
-            </button>
+            
+            {userlogin ? (
+              <div className="relative profile-dropdown">
+                <button 
+                  onClick={toggleProfile}
+                  className="flex items-center text-gray-700 hover:text-[#E7473C] focus:outline-none"
+                >
+                  <span className="mr-2">{currentuser?.email}</span>
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                {isProfileOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+                    <button 
+                      onClick={handleSignOut}
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button 
+                onClick={() => navigate('/')}
+                className="bg-[#E7473C] hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium"
+              >
+                Sign In
+              </button>
+            )}
           </div>
           
           {/* Mobile menu button */}
@@ -76,9 +138,27 @@ const Navbar = () => {
             <a href="#contact" className="block text-gray-700 hover:text-[#E7473C] px-3 py-2 text-base font-medium">
               Contact Us
             </a>
-            <button className="w-full mt-2 bg-[#E7473C] hover:bg-red-600 text-white px-4 py-2 rounded-md text-base font-medium">
-              Get Started
-            </button>
+            
+            {userlogin ? (
+              <div className="border-t border-gray-200 pt-2 mt-2">
+                <div className="px-3 py-2 text-sm text-gray-500">
+                  Signed in as: {currentuser?.email}
+                </div>
+                <button 
+                  onClick={handleSignOut}
+                  className="w-full mt-2 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md text-base font-medium"
+                >
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <button 
+                onClick={() => navigate('/')}
+                className="w-full mt-2 bg-[#E7473C] hover:bg-red-600 text-white px-4 py-2 rounded-md text-base font-medium"
+              >
+                Sign In
+              </button>
+            )}
           </div>
         </div>
       )}
