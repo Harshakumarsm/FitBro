@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import FallbackPage from './components/FallbackPage';
 import ErrorBoundary from './components/ErrorBoundary';
 import './App.css';
+import FitnessPlannerPage from './pages/FitnessPlannerPage';
 
 // Lazy load components
 const HeroSection = lazy(() => import('./components/HeroSection'));
@@ -63,6 +64,7 @@ export default function App() {
                   <VideoCallPage />
                 </Suspense>
               } />
+              <Route path="/fitness-planner" element={<FitnessPlannerPage />} />
               <Route path="*" element={<FallbackPage />} />
             </Routes>
           </Suspense>
