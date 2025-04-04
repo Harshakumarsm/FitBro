@@ -1,40 +1,4 @@
-import { useState } from 'react';
-
 const WhyUsSection = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  
-  const testimonials = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      role: "Fitness Enthusiast",
-      image: "https://randomuser.me/api/portraits/women/32.jpg",
-      quote: "FitBro transformed my fitness journey! The posture correction feature helped me avoid injuries and get better results from my workouts."
-    },
-    {
-      id: 2,
-      name: "Michael Chen",
-      role: "Marathon Runner",
-      image: "https://randomuser.me/api/portraits/men/45.jpg",
-      quote: "The meal planning tool is incredible. It helped me optimize my nutrition for training, and I've seen a significant improvement in my performance."
-    },
-    {
-      id: 3,
-      name: "Emily Rodriguez",
-      role: "Yoga Instructor",
-      image: "https://randomuser.me/api/portraits/women/68.jpg",
-      quote: "As a fitness professional, I recommend FitBro to all my clients. The appointment booking system has streamlined my business and helped me reach more people."
-    }
-  ];
-  
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
-  
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
-
   return (
     <section id="why-us" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,9 +8,9 @@ const WhyUsSection = () => {
             We combine cutting-edge technology with fitness expertise to deliver an unmatched experience.
           </p>
         </div>
-        
+
         {/* Benefits */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
             <div className="bg-[#E7473C] p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -58,7 +22,7 @@ const WhyUsSection = () => {
               Our AI-powered tools use advanced computer vision and machine learning to provide accurate, real-time feedback on your form and performance.
             </p>
           </div>
-          
+
           <div className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
             <div className="bg-[#178582] p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -70,7 +34,7 @@ const WhyUsSection = () => {
               Connect with certified fitness professionals who can provide personalized advice and support tailored to your specific needs and goals.
             </p>
           </div>
-          
+
           <div className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
             <div className="bg-green-600 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -81,63 +45,6 @@ const WhyUsSection = () => {
             <p className="text-gray-600">
               Our users report significant improvements in their form, strength, and overall fitness levels within just a few weeks of consistent use.
             </p>
-          </div>
-        </div>
-        
-        {/* Testimonials */}
-        <div className="bg-gray-50 rounded-xl p-8 shadow-lg">
-          <h3 className="text-2xl font-bold text-center mb-8">What Our Users Say</h3>
-          
-          <div className="relative">
-            <div className="flex flex-col md:flex-row items-center">
-              <div className="md:w-1/3 mb-6 md:mb-0 flex justify-center">
-                <img 
-                  src={testimonials[currentTestimonial].image} 
-                  alt={testimonials[currentTestimonial].name} 
-                  className="w-32 h-32 rounded-full object-cover border-4 border-[#E7473C]"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = `https://ui-avatars.com/api/?name=${testimonials[currentTestimonial].name.replace(' ', '+')}&background=E7473C&color=fff`;
-                  }}
-                />
-              </div>
-              <div className="md:w-2/3 md:pl-8">
-                <blockquote className="text-xl italic text-gray-700 mb-4">
-                  "{testimonials[currentTestimonial].quote}"
-                </blockquote>
-                <div className="font-semibold text-lg">{testimonials[currentTestimonial].name}</div>
-                <div className="text-gray-600">{testimonials[currentTestimonial].role}</div>
-              </div>
-            </div>
-            
-            <div className="flex justify-center mt-8">
-              <button 
-                onClick={prevTestimonial}
-                className="mx-2 p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition duration-300"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              
-              {testimonials.map((_, index) => (
-                <button 
-                  key={index}
-                  onClick={() => setCurrentTestimonial(index)}
-                  className={`mx-1 w-3 h-3 rounded-full ${currentTestimonial === index ? 'bg-[#E7473C]' : 'bg-gray-300'}`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-              
-              <button 
-                onClick={nextTestimonial}
-                className="mx-2 p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition duration-300"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
       </div>

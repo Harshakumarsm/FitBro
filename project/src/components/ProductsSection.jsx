@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import productImage1 from '../assets/product-1.svg';
 import productImage2 from '../assets/product-2.svg';
 import productImage3 from '../assets/product-3.svg';
@@ -84,9 +85,9 @@ const ProductsSection = () => {
                 <span>Verified fitness professionals</span>
               </li>
             </ul>
-            <button  className="bg-[#178582] hover:bg-teal-700 text-white px-6 py-3 rounded-md text-lg font-medium transition duration-300">
+            <Link to="/trainers" className="inline-block bg-[#178582] hover:bg-teal-700 text-white px-6 py-3 rounded-md text-lg font-medium transition duration-300">
               Book Now
-            </button>
+            </Link>
           </div>
           <div className="md:w-1/2">
             <img 

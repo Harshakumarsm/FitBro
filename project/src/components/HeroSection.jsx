@@ -1,4 +1,8 @@
-import heroImage from '../assets/hero-image.png';
+// Use a data URL for the hero image to avoid loading issues
+const heroImageData = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+CiAgPHJlY3QgeD0iNTAiIHk9IjUwIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgcng9IjEwIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNkZGQiIHN0cm9rZS13aWR0aD0iMiIvPgogIAogIDwhLS0gQXBwIFVJIGVsZW1lbnRzIC0tPgogIDxyZWN0IHg9IjcwIiB5PSI4MCIgd2lkdGg9IjQ2MCIgaGVpZ2h0PSI2MCIgcng9IjUiIGZpbGw9IiNmOGY4ZjgiLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMTAiIHI9IjE1IiBmaWxsPSIjMTc4NTgyIi8+CiAgPHJlY3QgeD0iMTMwIiB5PSIxMDAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMTAiIHJ4PSIyIiBmaWxsPSIjMzMzIi8+CiAgPHJlY3QgeD0iMTMwIiB5PSIxMjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiM3NzciLz4KICAKICA8cmVjdCB4PSI3MCIgeT0iMTYwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE3MCIgcng9IjUiIGZpbGw9IiNmOGY4ZjgiLz4KICA8cmVjdCB4PSIzMTAiIHk9IjE2MCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNzAiIHJ4PSI1IiBmaWxsPSIjZjhmOGY4Ii8+CiAgCiAgPCEtLSBGaXRuZXNzIGdyYXBoIC0tPgogIDxwb2x5bGluZSBwb2ludHM9IjkwLDI4MCAxMzAsMjQwIDE3MCwyNjAgMjEwLDIwMCAyNTAsMjIwIiBzdHJva2U9IiNFNzQ3M0MiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPgogIDxjaXJjbGUgY3g9IjkwIiBjeT0iMjgwIiByPSI0IiBmaWxsPSIjRTc0NzNDIi8+CiAgPGNpcmNsZSBjeD0iMTMwIiBjeT0iMjQwIiByPSI0IiBmaWxsPSIjRTc0NzNDIi8+CiAgPGNpcmNsZSBjeD0iMTcwIiBjeT0iMjYwIiByPSI0IiBmaWxsPSIjRTc0NzNDIi8+CiAgPGNpcmNsZSBjeD0iMjEwIiBjeT0iMjAwIiByPSI0IiBmaWxsPSIjRTc0NzNDIi8+CiAgPGNpcmNsZSBjeD0iMjUwIiBjeT0iMjIwIiByPSI0IiBmaWxsPSIjRTc0NzNDIi8+CiAgCiAgPCEtLSBXb3Jrb3V0IGljb25zIC0tPgogIDxjaXJjbGUgY3g9IjM0MCIgY3k9IjIwMCIgcj0iMjAiIGZpbGw9IiMxNzg1ODIiLz4KICA8Y2lyY2xlIGN4PSIzOTAiIGN5PSIyMDAiIHI9IjIwIiBmaWxsPSIjRTc0NzNDIi8+CiAgPGNpcmNsZSBjeD0iNDQwIiBjeT0iMjAwIiByPSIyMCIgZmlsbD0iIzE3ODU4MiIvPgogIDxjaXJjbGUgY3g9IjQ5MCIgY3k9IjIwMCIgcj0iMjAiIGZpbGw9IiNFNzQ3M0MiLz4KICAKICA8cmVjdCB4PSIzMzAiIHk9IjI0MCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxMCIgcng9IjIiIGZpbGw9IiMzMzMiLz4KICA8cmVjdCB4PSIzMzAiIHk9IjI2MCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSIxMCIgcng9IjIiIGZpbGw9IiMzMzMiLz4KICA8cmVjdCB4PSIzMzAiIHk9IjI4MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxMCIgcng9IjIiIGZpbGw9IiMzMzMiLz4KICAKICA8IS0tIEZpdEJybyBsb2dvIC0tPgogIDx0ZXh0IHg9IjMwMCIgeT0iNDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxNzg1ODIiPkZpdEJybzwvdGV4dD4KPC9zdmc+';
+
+// Use the data URL directly to avoid any loading issues
+const heroImage = heroImageData;
 
 const HeroSection = () => {
   return (
@@ -23,14 +27,14 @@ const HeroSection = () => {
           </div>
           <div className="md:w-1/2">
             <div className="relative">
-              {/* Replace with actual image */}
-              <img 
-                src={heroImage} 
-                alt="Fitness tracking app interface" 
+              {/* Using the local image with fallback */}
+              <img
+                src={heroImage}
+                alt="Fitness tracking app interface"
                 className="rounded-lg shadow-xl"
                 onError={(e) => {
                   e.target.onerror = null;
-                  e.target.src = 'https://via.placeholder.com/600x400?text=FitBro+Hero+Image';
+                  e.target.src = fallbackImageData;
                 }}
               />
               
